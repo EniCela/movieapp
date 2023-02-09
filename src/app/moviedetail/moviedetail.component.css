@@ -1,0 +1,29 @@
+
+.moviedetails{
+    width: 50%;
+    height: 350px;
+    float: left;
+    color: white;
+}
+.photodetail{
+    width: 50%;
+    height: 50%;
+    float: right;   
+}
+.photodetail img{
+    width: 60%;
+    height: 20%;
+    margin-right: 50px;
+    border-radius: 30px;
+    border: 2px black;
+}
+/*.box2 :hover{
+width: 85%;
+height: 550px;
+
+} */
+.details{
+    display: flex;
+    background-color: none !important;
+    justify-content: space-between;
+}

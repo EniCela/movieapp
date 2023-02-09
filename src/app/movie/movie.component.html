@@ -1,0 +1,70 @@
+<div class="main container">
+    <div class="filters">
+        <!-- dropdwon 1***************** -->
+        <div class="gfg filter1 mr-3">
+            <div class="btn-group" mdbDropdown>
+                <button mdbDropdownToggle type="button" 
+                        mdbBtn color="blue" 
+                        class="dropdown-toggle" 
+                        mdbWavesEffect> 
+                        filter_by_year
+                </button>
+                <div  class="dropdown-menu dropdown-primary" >
+                    <div class="dropbutton" *ngFor="let item1 of year"> 
+                    <!-- <button class="dropdown-item">{{item1}}</button>  -->
+                        <button class="dropdown-item" (click)="filterimi_year(item1)" >{{item1}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <!-- **********dropdwon 2************** -->
+                
+        <div class="gfg filter2">
+            <div class="btn-group" mdbDropdown>
+                <button mdbDropdownToggle type="button" 
+                        mdbBtn color="blue" 
+                        class="dropdown-toggle waves-light" 
+                        mdbWavesEffect> 
+                        filter_by_genres
+                </button>
+                <div class="dropdown-menu dropdown-primary" >
+                    <div  *ngFor="let item1 of genres">
+                        <button class="dropdown-item" (click)="filterimi_genres(item1)" >{{item1}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="search">
+        <!-- ********search************** -->
+        <input class="searchmovie" type="text" name="search" [(ngModel)]="filterstring"  placeholder="Search Movie">
+    </div>
+</div>
+<!-- ***********movie***************** -->
+<div class="movie1" id="movieid">
+    <div *ngFor="let item of movies |filter:filterstring |paginate: { itemsPerPage: tableSize, currentPage: page, totalItems: count}; let i=index">
+        <div class="card" style="width: 20rem;background-color:white;">
+            <img class="card-img-top" [routerLink]="['/moviedetail',item.id]" [src]="item.posterUrl">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.title}}</h5>
+                </div>
+                <div class="card-body ">
+                <button type="button"  class="button3" style="margin: 5px; border-radius: 20px" (click)="addtowatchlater(item.id)">Watch Later<i class="fa-regular fa-alarm-clock"></i></button>
+                <button type="button"  class="button2" style="margin: 5px; border-radius: 20px;" (click)="addtofavorite(item.id)">Favorite <i class="fa fa-thumbs-up"></i></button>
+                <button type="button"  class="button1" style="margin: 5px; border-radius: 20px;" (click)="deletefavorite(item.id)">PLay <i class="fa fa-play"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pagination">
+    <pagination-controls style="color: white;"
+        previousLabel="Prev"
+        nextLabel="Next"
+        (pageChange)="onTabledatachange($event)" class="float-right">
+    </pagination-controls>
+</div>
+<app-footer></app-footer>
+
+
+

@@ -1,0 +1,15 @@
+<div class="movie1" id="movieid">
+    <div *ngFor="let item of watchlater ">
+        <div class="card" style="width: 20rem;background-color:white;">
+            <img class="card-img-top" [routerLink]="['/moviedetail',item.id]" [src]="item.posterUrl">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.title}}</h5>
+                </div> 
+ <div class="card-body ">
+<button type="button"  class="button3" style="margin: 5px; border-radius: 20px" (click)="deletewatchlatermovie(item.id)">Delete <i class="fa-regular fa-alarm-clock"></i></button>
+<button type="button"  class="button1" style="margin: 5px; border-radius: 20px;" (click)="playfunction()">PLay <i class="fa fa-play"></i></button>
+    </div>
+</div>
+</div>
+</div>
+<app-footer></app-footer>
